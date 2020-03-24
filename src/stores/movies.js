@@ -1,17 +1,5 @@
 import { createStore } from "redux";
-
-const initialstate = {
-  movies: [
-    { name: "Terminator" },
-    { name: "The Avengers" }
-  ]
-};
-
-function reducer(state = initialstate) {
-  return {
-    movies: state.movies
-  };
-}
+import reducer from '../reducers/movieListReducer';
 
 const store = createStore(
   reducer,
