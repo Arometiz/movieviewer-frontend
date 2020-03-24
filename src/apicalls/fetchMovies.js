@@ -1,15 +1,16 @@
-import {fetchMoviesPending, fetchMoviesSucces, fetchMoviesError } from '../actions';
+import {fetchMoviesPending, fetchMoviesSucces, fetchMoviesError } from '../actions/getAllMoviesAction';
+import { apiUrl, moviePath } from '../environment';
 
 function fetchMovies(){
     return dispatch => {
         dispatch(fetchMoviesPending());
-        fetch('http://localhost:3030/movie/all-approved-movies')
-        .then(res => res.jsom())
+        fetch(apiUrl + moviePath + "/all-approved-movies")
+        .then(res => res.json())
         .then(res => {
             if(res.error){
                 throw(res.error);
             }
-            dispatch(fetchMoviesSucces(res.movies));
+            dispatch(fetchMoviesSucces(res.movies, res.links));
             return res.movies;
         })
         .catch(error => {
@@ -18,5 +19,5 @@ function fetchMovies(){
     }
 }
 
-export default fetchMoviesError;
+export default fetchMovies;
 

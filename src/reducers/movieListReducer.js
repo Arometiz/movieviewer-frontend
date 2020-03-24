@@ -7,10 +7,11 @@ import {
 const initialState = {
   pending: false,
   movies: [],
+  links: [],
   error: null
 };
 
-export function moviesReducer(state = initialState, action) {
+export default function moviesReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_MOVIES_PENDING:
       return {
@@ -21,7 +22,8 @@ export function moviesReducer(state = initialState, action) {
       return {
         ...state,
         pending: false,
-        movies: action.payload
+        movies: action.movies,
+        links: action.links
       };
     case FETCH_MOVIES_ERROR:
       return {
@@ -37,3 +39,4 @@ export function moviesReducer(state = initialState, action) {
 export const getMovies = state => state.movies;
 export const getMoviesPending = state => state.pending;
 export const getMoviesError = state => state.error;
+export const getLinks = state => state.links;

@@ -1,15 +1,31 @@
-.card{
-    margin-top: 5%;
+.card {
+  margin-top: 5%;
 }
 
-.col{
-    flex-grow: 0;
+.col {
+  flex-grow: 0;
 }
 
-.row{
-    justify-content: center;
+.row {
+  justify-content: center;
 }
 
-.card-title{
-    text-align: center;
+.card-title {
+  text-align: center;
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card-img{
+    width: 286px;
+    height: 161px;
+}
+
+.h1{
+  justify-content: center;
 }
