@@ -2,7 +2,7 @@ import "../css/allmoviescard.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import React, { Component } from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row, Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import {
   getMoviesPending,
@@ -60,28 +60,33 @@ class Allmoviescard extends Component {
 
     return (
       <div>
-      <center><h1>Movies</h1></center>
-      <hr></hr>
-        <Row>
-          {movies.map(movie => (
-            <Col key={movie.movie_id}>
-              <Card style={{ width: "18rem" }}>
-                <Card.Img
-                  src={
-                    apiUrl +
-                    moviePath +
-                    links[1].link +
-                    "?movie_id=" +
-                    movie.movie_id
-                  }
-                />
-                <Card.Body>
-                  <Card.Title>{movie.name}</Card.Title>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+        <center>
+          <h1>Movies</h1>
+        </center>
+        <hr></hr>
+        <Container lg={15}>
+          <Row>
+            {movies.map(movie => (
+              <Col key={movie.movie_id} lg={3}>
+                <Card style={{ width: "16rem" }}>
+                  <Card.Img
+                    src={
+                      apiUrl +
+                      moviePath +
+                      links[1].link +
+                      "?movie_id=" +
+                      movie.movie_id
+                    }
+                  />
+                </Card>
+                <ul>
+                  <li className="releaseDate">Release date: {movie.releaseDate}</li>
+                  <li className="movieName">{movie.name}</li>
+                </ul>
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </div>
     );
   }

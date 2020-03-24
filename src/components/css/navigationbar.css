@@ -1,8 +1,9 @@
 .nav{
-    background-color:#181818;
+    background-color:#3B4956;
     width: 300px;
     float: left;
     height: 100vh;
+    position: absolute;
 }
 
 .nav-item{

@@ -1,17 +1,24 @@
 .card {
   margin-top: 5%;
+  border: none;
+  box-shadow: 5px 5px 5px;
+}
+
+.row{
+  width: auto;
 }
 
 .col {
   flex-grow: 0;
 }
 
-.row {
-  justify-content: center;
-}
-
 .card-title {
   text-align: center;
+}
+
+.container{
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 .loader {
@@ -22,10 +29,29 @@
 }
 
 .card-img{
-    width: 286px;
-    height: 161px;
+    width: auto;
+    height: 360px;
 }
 
-.h1{
+h1{
   justify-content: center;
+  color: white;
+}
+
+.card-title{
+  font-size: 1vh;
+}
+
+.releaseDate{
+  color: #626871;
+}
+
+.movieName{
+  color: white;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
