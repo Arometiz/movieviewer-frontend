@@ -44,8 +44,17 @@ class Allmoviescard extends Component {
 
   shouldComponentRender() {
     const { pending } = this.props;
+    console.log(this.props);
     if (pending === false) return false;
     return true;
+  }
+
+  clickMovie(movie) {
+    return window.location.href = "/movie/" + movie.movie_id;
+  }
+
+  newMovie(){
+    return window.location.href= "movie/add-new-movie";
   }
 
   render() {
@@ -63,15 +72,15 @@ class Allmoviescard extends Component {
         <h1>Movies</h1>
         <Row className="underLineRow">
           <Col lg={11}>
-              <h2></h2>
+            <h2></h2>
           </Col>
           <Col lg={1}>
-              <Button>Add new movie</Button>
+            <Button onClick={() => this.newMovie()}>Add new movie</Button>
           </Col>
         </Row>
         <Row lg={10} className="movieRow">
           {movies.map(movie => (
-            <Col key={movie.movie_id}>
+            <Col onClick={() => this.clickMovie(movie)} key={movie.movie_id}>
               <Card style={{ width: "16rem" }}>
                 <Card.Img
                   src={
@@ -84,9 +93,7 @@ class Allmoviescard extends Component {
                 />
               </Card>
               <ul>
-                <li className="releaseDate">
-                  Release date: {movie.releaseDate}
-                </li>
+                <li className="releaseDate">Release: {movie.releaseDate}</li>
                 <li className="movieName">{movie.name}</li>
               </ul>
             </Col>

@@ -36,7 +36,7 @@ export default function moviesReducer(state = initialState, action) {
   }
 }
 
-export const getMovies = state => state.movies;
-export const getMoviesPending = state => state.pending;
-export const getMoviesError = state => state.error;
-export const getLinks = state => state.links;
+export const getMovies = state => state.movies.movies;
+export const getMoviesPending = state => state.movies.pending;
+export const getMoviesError = state => state.movies.error;
+export const getLinks = state => state.movies.links;
