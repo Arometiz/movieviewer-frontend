@@ -5,7 +5,7 @@ class Toolbar extends Component {
     render() {
         return (
             <div className="toolbar">
-                <h1>HOI VINCENT</h1>
+                <h1 className="title">Movie Viewer</h1>
             </div>
         );
     }

@@ -4,21 +4,22 @@
   box-shadow: 5px 5px 5px;
 }
 
-.row{
+.row {
   width: auto;
+}
+
+.movieRow {
+  margin: auto;
 }
 
 .col {
   flex-grow: 0;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .card-title {
   text-align: center;
-}
-
-.container{
-  margin-left: 30%;
-  margin-right: 30%;
 }
 
 .loader {
@@ -28,30 +29,58 @@
   transform: translate(-50%, -50%);
 }
 
-.card-img{
-    width: auto;
-    height: 360px;
+.card-img {
+  width: auto;
+  height: 360px;
 }
 
-h1{
-  justify-content: center;
-  color: white;
+h2::before {
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid #505863;
+  margin: auto;
 }
 
-.card-title{
+.btn, .btn:hover, .btn:focus, .btn:active {
+  background-color: #21E08B!important;
+  color:#24323F!important;
+  border: none!important;
+  box-shadow: none;
+  border-radius: 50px!important;
+}
+
+h2 {
+  display: flex;
+  flex-direction: row;
+  text-align: center; 
+  line-height: 0.1em;
+  padding-top:1%;
+}
+
+.card-title {
   font-size: 1vh;
 }
 
-.releaseDate{
+.releaseDate {
   color: #626871;
 }
 
-.movieName{
+.movieName {
   color: white;
 }
 
-ul{
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  color: white;
+  padding: 0 15px;
+  padding-top: 1%;
+}
+
+.underLineRow {
+  padding-left: 15px;
 }

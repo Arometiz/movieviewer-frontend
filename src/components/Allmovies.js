@@ -7,7 +7,7 @@ import './css/allmovies.css';
 class Allmovies extends Component {
   render() {
     return (
-          <Allmoviescard></Allmoviescard>
+        <Allmoviescard></Allmoviescard>
     );
   }
 }
