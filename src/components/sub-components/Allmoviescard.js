@@ -14,6 +14,7 @@ import fetchMoviesAction from "../../apicalls/fetchMovies";
 import { bindActionCreators } from "redux";
 import Loader from "react-loader-spinner";
 import { apiUrl, moviePath } from "../../environment";
+import "../css/movie.css";
 
 const mapStateToProps = state => ({
   error: getMoviesError(state),
@@ -44,17 +45,28 @@ class Allmoviescard extends Component {
 
   shouldComponentRender() {
     const { pending } = this.props;
-    console.log(this.props);
     if (pending === false) return false;
     return true;
   }
 
   clickMovie(movie) {
-    return window.location.href = "/movie/" + movie.movie_id;
+    return (window.location.href = "/movie/" + movie.movie_id);
   }
 
-  newMovie(){
-    return window.location.href= "movie/add-new-movie";
+  newMovie() {
+    return (window.location.href = "movie/add-new-movie");
+  }
+
+  arrayFormat(genres) {
+    let array = [];
+    genres.forEach(genre => {
+      array.push(genre.name);
+    });
+    
+    array.sort((a,b) => (a.toString() - b.toString()));;
+
+    let string = array.toString();
+    return string.replace(/\,/g,' / ');
   }
 
   render() {
@@ -80,7 +92,11 @@ class Allmoviescard extends Component {
         </Row>
         <Row lg={10} className="movieRow">
           {movies.map(movie => (
-            <Col onClick={() => this.clickMovie(movie)} key={movie.movie_id}>
+            <Col
+              className="movieCol"
+              onClick={() => this.clickMovie(movie)}
+              key={movie.movie_id}
+            >
               <Card style={{ width: "16rem" }}>
                 <Card.Img
                   src={
@@ -93,7 +109,9 @@ class Allmoviescard extends Component {
                 />
               </Card>
               <ul>
-                <li className="releaseDate">Release: {movie.releaseDate}</li>
+                <li className="releaseDate">
+                  {movie.releaseDate + " - " + this.arrayFormat(movie.genres)}
+                </li>
                 <li className="movieName">{movie.name}</li>
               </ul>
             </Col>

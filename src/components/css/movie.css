@@ -1,0 +1,68 @@
+.movieHeader{
+    font-size: 30px;
+    color: white;
+    padding-top: 2%;
+    margin-left: 5%;
+}
+
+.movieDescription{
+    color: #626871;
+    max-width: 100%;
+    margin-left: 5%;
+}
+
+.movieInformation{
+    display: flex;
+    border: none;
+    padding: 0 0;
+}
+
+.movieImage{
+    width: 300px;
+    height: 440px;
+    margin-top: 2%;
+}
+
+.reviewInfo{
+    margin-top: 2%;
+}
+
+.movieGenres{
+    color: #626871;
+    text-decoration: none;
+    margin-left: 3%;
+}
+
+.box > div{
+    display:flex;
+    flex-direction: row;
+    margin-left: 3%;
+}
+
+.castSection{
+    font-size: 30px;
+    color: white;
+    padding-top: 2%;
+}
+
+.reviewSection{
+    font-size: 30px;
+    color: white;
+    padding-top: 2%;
+}
+
+.youtubePlayer{
+    margin-top: 2%;
+    margin-left: 2%;
+    padding: 0 0;
+}
+
+.movieRole{
+    color: white;
+    font-size: 15px;
+}
+
+.realName{
+    color: #626871;
+    font-size: 12px;
+}

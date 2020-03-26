@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import {
   getMoviePending,
   getMovieError,
@@ -9,8 +8,9 @@ import {
 import { bindActionCreators } from "redux";
 import fetchMovieAction from "../apicalls/fetchMovie";
 import Loader from "react-loader-spinner";
-import { Card, Col, Row, Button } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { apiUrl, moviePath } from "../environment";
+import YouTube from "react-youtube";
 
 const mapStateToProps = state => ({
   error: getMovieError(state),
@@ -44,7 +44,28 @@ class Movie extends Component {
     return true;
   }
 
+  arrayFormat(genres) {
+    let array = [];
+    genres.forEach(genre => {
+      array.push(genre.name);
+    });
+
+    array.sort((a, b) => a.toString() - b.toString());
+
+    let string = array.toString();
+    return string.replace(/\,/g, " / ");
+  }
+
   render() {
+    const opts = {
+      height: "390",
+      width: "300",
+      playerVars: {
+        // https://developers.google.com/youtube/player_parameters
+        autoplay: 1
+      }
+    };
+
     const { movie } = this.props;
     if (this.props.movie !== null) {
       console.log(this.props);
@@ -52,40 +73,78 @@ class Movie extends Component {
     if (this.props.movie !== null) {
       return (
         <div>
-          <Row className="underLineRow">
-            <Col lg={11}>
-              <h2></h2>
+          <Row>
+            <Col className="movieInformation" style={{ flexGrow: "1" }} lg={5}>
+              <div className="box">
+                <Col>
+                  <div>
+                    <img
+                      className="movieImage"
+                      src={
+                        apiUrl +
+                        moviePath +
+                        "/single-movie-image" +
+                        "?movie_id=" +
+                        movie.movie.movieId
+                      }
+                    />
+                    <ul>
+                      <li className="movieGenres">
+                        {this.arrayFormat(movie.movie.genres)}
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <ul className="justify-center" style={{ flexShrink: "1" }}>
+                      <li className="movieHeader">
+                        {movie.movie.name +
+                          " (" +
+                          movie.movie.releaseDate +
+                          ")"}
+                      </li>
+                      <hr></hr>
+                      <li className="movieDescription">
+                        {movie.movie.description}
+                      </li>
+                    </ul>
+                  </div>
+                </Col>
+              </div>
             </Col>
-            <Col lg={1}>
-              <Button onClick={() => this.newMovie()}>Add new movie</Button>
+            <Col lg={3}>
+              <ul>
+                <li className="castSection">Cast</li>
+                <hr></hr>
+                <li className="movieRole">Deadpool</li>
+                <li className="realName">Ryan Reynolds</li>
+                <hr></hr>
+                <li className="movieRole">Thor</li>
+                <li className="realName">Chris Hemsworth</li>
+              </ul>
+            </Col>
+            <Col lg={3}>
+              <ul>
+                <li className="reviewSection">Reviews</li>
+                <hr></hr>
+              </ul>
             </Col>
           </Row>
-          <Row lg={10} className="movieRow">
-            <Col>
-              <Card style={{ width: "16rem" }}>
-                <Card.Img
-                  src={
-                    apiUrl +
-                    moviePath +
-                    "/single-movie-image?movie_id=" +
-                    movie.movieId
-                  }
-                />
-              </Card>
-              <ul>
-                <li className="releaseDate">Release: {movie.releaseDate}</li>
-                <li className="movieName">{movie.name}</li>
-              </ul>
+          <Row>
+            <Col lg={5} className="youtubePlayer">
+              <YouTube
+                videoId={movie.movie.youtube_id}
+                opt={this.opts}
+              ></YouTube>
             </Col>
           </Row>
         </div>
       );
     }
     return (
-        <div className="loader">
-          <Loader type="TailSpin" color="#000000" height={100} width={100} />
-        </div>
-      );
+      <div className="loader">
+        <Loader type="TailSpin" color="#000000" height={100} width={100} />
+      </div>
+    );
   }
 }
 
