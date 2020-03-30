@@ -9,6 +9,7 @@
     color: #626871;
     max-width: 100%;
     margin-left: 5%;
+    margin-right: 3%;
 }
 
 .movieInformation{
@@ -30,7 +31,7 @@
 .movieGenres{
     color: #626871;
     text-decoration: none;
-    margin-left: 3%;
+    margin-left: 5%;
 }
 
 .box > div{

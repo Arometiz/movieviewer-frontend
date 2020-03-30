@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import "./css/allmoviescard.css";
-import Allmoviescard from "./sub-components/Allmoviescard";
-import './css/allmovies.css';
+import Allmoviescard from "../sub-components/moviescard/MoviesCard";
+import '../movies/movies.css';
 
 
 class Allmovies extends Component {

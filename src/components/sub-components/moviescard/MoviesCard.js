@@ -1,4 +1,4 @@
-import "../css/allmoviescard.css";
+import "./moviescard.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import React, { Component } from "react";
@@ -9,12 +9,11 @@ import {
   getMoviesError,
   getMovies,
   getLinks
-} from "../../reducers/movieListReducer";
-import fetchMoviesAction from "../../apicalls/fetchMovies";
+} from "../../../reducers/movieListReducer";
+import fetchMoviesAction from "../../../apicalls/fetchMovies";
 import { bindActionCreators } from "redux";
 import Loader from "react-loader-spinner";
-import { apiUrl, moviePath } from "../../environment";
-import "../css/movie.css";
+import { apiUrl, moviePath } from "../../../environment";
 
 const mapStateToProps = state => ({
   error: getMoviesError(state),

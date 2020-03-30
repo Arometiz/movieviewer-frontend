@@ -4,13 +4,14 @@ import {
   getMoviePending,
   getMovieError,
   getMovie
-} from "../reducers/movieReducer";
+} from "../../reducers/movieReducer";
 import { bindActionCreators } from "redux";
-import fetchMovieAction from "../apicalls/fetchMovie";
+import fetchMovieAction from "../../apicalls/fetchMovie";
 import Loader from "react-loader-spinner";
 import { Card, Col, Row } from "react-bootstrap";
-import { apiUrl, moviePath } from "../environment";
+import { apiUrl, moviePath } from "../../environment";
 import YouTube from "react-youtube";
+import "./movie.css";
 
 const mapStateToProps = state => ({
   error: getMovieError(state),
@@ -88,11 +89,6 @@ class Movie extends Component {
                         movie.movie.movieId
                       }
                     />
-                    <ul>
-                      <li className="movieGenres">
-                        {this.arrayFormat(movie.movie.genres)}
-                      </li>
-                    </ul>
                   </div>
                   <div>
                     <ul className="justify-center" style={{ flexShrink: "1" }}>
@@ -102,7 +98,10 @@ class Movie extends Component {
                           movie.movie.releaseDate +
                           ")"}
                       </li>
-                      <hr></hr>
+                      <li className="movieGenres">
+                        {this.arrayFormat(movie.movie.genres)}
+                      </li>
+                      <br></br>
                       <li className="movieDescription">
                         {movie.movie.description}
                       </li>
