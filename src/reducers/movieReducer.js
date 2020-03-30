@@ -4,6 +4,10 @@ import {
   FETCH_MOVIE_ERROR
 } from "../actions/getMovieAction";
 
+import {
+  EMPTY_MOVIE,
+} from "../actions/emptyMovieAction";
+
 const initialState = {
   pending: false,
   movie: null,
@@ -28,6 +32,12 @@ export default function movieReducer(state = initialState, action) {
         ...state,
         pending: false,
         error: action.error
+      };
+    case EMPTY_MOVIE:
+      return {
+        ...state,
+        pending: false,
+        movie: action.movie
       };
     default:
       return state;

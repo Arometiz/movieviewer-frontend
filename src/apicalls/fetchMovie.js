@@ -6,10 +6,10 @@ import {
 import { apiUrl, moviePath } from "../environment";
 
 
-function fetchMovie(movie_id){
+function fetchMovie(movie_id, link){
     return dispatch => {
         dispatch(fetchMoviePending());
-        fetch(apiUrl + moviePath + "/single-movie-data?movie_id=" + movie_id)
+        fetch(apiUrl + moviePath + link + "?movie_id=" + movie_id)
         .then(res => res.json())
         .then(res => {
             if(res.error){

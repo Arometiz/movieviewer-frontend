@@ -8,14 +8,15 @@ import {
 import { bindActionCreators } from "redux";
 import fetchMovieAction from "../../apicalls/fetchMovie";
 import Loader from "react-loader-spinner";
-import { Card, Col, Row } from "react-bootstrap";
-import { apiUrl, moviePath } from "../../environment";
+import { Col, Row } from "react-bootstrap";
+import { apiUrl, moviePath, actorPath } from "../../environment";
 import YouTube from "react-youtube";
 import "./movie.css";
 
 const mapStateToProps = state => ({
   error: getMovieError(state),
   movie: getMovie(state),
+  links: state.movies.links,
   pending: getMoviePending(state)
 });
 
@@ -36,7 +37,7 @@ class Movie extends Component {
 
   componentDidMount() {
     const { fetchMovie } = this.props;
-    fetchMovie(this.props.match.params.id);
+    fetchMovie(this.props.match.params.id, this.props.links[0].link);
   }
 
   shouldComponentRender() {
@@ -58,82 +59,88 @@ class Movie extends Component {
   }
 
   render() {
-    const opts = {
-      height: "390",
-      width: "300",
-      playerVars: {
-        // https://developers.google.com/youtube/player_parameters
-        autoplay: 1
-      }
-    };
-
     const { movie } = this.props;
-    if (this.props.movie !== null) {
-      console.log(this.props);
-    }
-    if (this.props.movie !== null) {
+    if (!this.pending && this.props.movie != null) {
       return (
         <div>
           <Row>
-            <Col className="movieInformation" style={{ flexGrow: "1" }} lg={5}>
+            <Col className="movieInformation" lg={7}>
               <div className="box">
                 <Col>
-                  <div>
-                    <img
-                      className="movieImage"
-                      src={
-                        apiUrl +
-                        moviePath +
-                        "/single-movie-image" +
-                        "?movie_id=" +
-                        movie.movie.movieId
-                      }
-                    />
-                  </div>
-                  <div>
-                    <ul className="justify-center" style={{ flexShrink: "1" }}>
+                  <div className="movieDiv">
+                    <ul className="justify-center">
                       <li className="movieHeader">
                         {movie.movie.name +
                           " (" +
                           movie.movie.releaseDate +
                           ")"}
                       </li>
-                      <li className="movieGenres">
-                        {this.arrayFormat(movie.movie.genres)}
+                    </ul>
+                    <div className="movieBox">
+                      <img
+                        alt={movie.movie.name}
+                        className="movieImage"
+                        src={
+                          apiUrl +
+                          moviePath +
+                          this.props.links[1].link +
+                          "?movie_id=" +
+                          movie.movie.movieId
+                        }
+                      />
+                      <YouTube
+                        className="youtubePlayer"
+                        videoId={movie.movie.youtube_id}
+                      ></YouTube>
+                    </div>
+                    <ul>
+                      <li>
+                        <div className="movieGenres">
+                          {this.arrayFormat(movie.movie.genres)}
+                        </div>
                       </li>
-                      <br></br>
-                      <li className="movieDescription">
-                        {movie.movie.description}
+                      <li>
+                        <div className="movieDescription">
+                          {movie.movie.description}
+                        </div>
                       </li>
                     </ul>
+
+                    <Row lg={12} className="castSection">
+                      <img src></img>
+                      <ul>
+                        <li>Cast</li>
+                        <h2 id="mainMovieLine"> </h2>
+                          {movie.movie.actors.map(actor => (
+                        <Col lg={3} className="actor">
+                            <ul className="actorItem">
+                              <img
+                                className="actorPicture"
+                                src={
+                                  apiUrl +
+                                  actorPath +
+                                  "/actor-image?actor_id=" +
+                                  actor.actor_id
+                                }
+                              ></img>
+                              <div className="actorInformation">
+                                <li className="movieRole">{actor.role}</li>
+                                <li className="realName">{actor.name}</li>
+                              </div>
+                            </ul>
+                        </Col>
+                          ))}
+                      </ul>
+                    </Row>
                   </div>
                 </Col>
               </div>
             </Col>
-            <Col lg={3}>
-              <ul>
-                <li className="castSection">Cast</li>
-                <hr></hr>
-                <li className="movieRole">Deadpool</li>
-                <li className="realName">Ryan Reynolds</li>
-                <hr></hr>
-                <li className="movieRole">Thor</li>
-                <li className="realName">Chris Hemsworth</li>
-              </ul>
-            </Col>
-            <Col lg={3}>
+            <Col lg={5}>
               <ul>
                 <li className="reviewSection">Reviews</li>
-                <hr></hr>
+                <h2></h2>
               </ul>
-            </Col>
-          </Row>
-          <Row>
-            <Col lg={5} className="youtubePlayer">
-              <YouTube
-                videoId={movie.movie.youtube_id}
-                opt={this.opts}
-              ></YouTube>
             </Col>
           </Row>
         </div>

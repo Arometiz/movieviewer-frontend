@@ -2,36 +2,36 @@
     font-size: 30px;
     color: white;
     padding-top: 2%;
-    margin-left: 5%;
 }
 
 .movieDescription{
-    color: #626871;
-    max-width: 100%;
-    margin-left: 5%;
-    margin-right: 3%;
+    color: white;
+    max-width: 90%;
+    margin-top: 1%
 }
 
 .movieInformation{
-    display: flex;
     border: none;
     padding: 0 0;
+    width: 100%;
 }
 
 .movieImage{
-    width: 300px;
-    height: 440px;
-    margin-top: 2%;
+    width: 400px;
+    height: 550px;
 }
 
 .reviewInfo{
     margin-top: 2%;
 }
 
+.movieDiv{
+    width: 100%;
+}
+
 .movieGenres{
     color: #626871;
     text-decoration: none;
-    margin-left: 5%;
 }
 
 .box > div{
@@ -43,7 +43,14 @@
 .castSection{
     font-size: 30px;
     color: white;
-    padding-top: 2%;
+    width: 100%;
+    padding: 0 15px;
+    margin-top: 2%;
+}
+
+.actor{
+    display: inline-block;
+    margin-right: 1.5%;
 }
 
 .reviewSection{
@@ -52,18 +59,52 @@
     padding-top: 2%;
 }
 
+
+#mainMovieLine::before {
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid #505863;
+    margin-bottom: 1%;
+  }
+
 .youtubePlayer{
-    margin-top: 2%;
-    margin-left: 2%;
+    margin-left: 3%;
     padding: 0 0;
+    height: 550px;
+    width: 870px;
 }
 
 .movieRole{
     color: white;
-    font-size: 15px;
+    font-size: 16px;
+}
+
+.movieBox{
+    display: flex;
+    margin-top: 2%;
 }
 
 .realName{
     color: #626871;
-    font-size: 12px;
+    font-size: 14px;
+}
+
+.actorPicture{
+    height: 90px;
+    width: 60px;
+    object-fit: cover;
+}
+
+.actorItem{
+    display: flex;
+    width: 100%;
+}
+
+.actorInformation{
+    margin-left: 3%;
+}
+
+.actor{
+    padding: 0 0;
+    margin: 0 0 0;
 }

@@ -14,18 +14,21 @@ import fetchMoviesAction from "../../../apicalls/fetchMovies";
 import { bindActionCreators } from "redux";
 import Loader from "react-loader-spinner";
 import { apiUrl, moviePath } from "../../../environment";
+import emptyMovieAction from "../../../actions/emptyMovieAction";
 
 const mapStateToProps = state => ({
   error: getMoviesError(state),
   movies: getMovies(state),
   pending: getMoviesPending(state),
+  movie: state.movie.movie,
   links: getLinks(state)
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      fetchMovies: fetchMoviesAction
+      fetchMovies: fetchMoviesAction,
+      emptyMovie: emptyMovieAction
     },
     dispatch
   );
@@ -38,7 +41,8 @@ class Allmoviescard extends Component {
   }
 
   componentDidMount() {
-    const { fetchMovies } = this.props;
+    const { fetchMovies, emptyMovie } = this.props;
+    emptyMovie();
     fetchMovies();
   }
 
@@ -49,6 +53,7 @@ class Allmoviescard extends Component {
   }
 
   clickMovie(movie) {
+    console.log(movie);
     return (window.location.href = "/movie/" + movie.movie_id);
   }
 
@@ -62,11 +67,12 @@ class Allmoviescard extends Component {
       array.push(genre.name);
     });
     
-    array.sort((a,b) => (a.toString() - b.toString()));;
+    array.sort(((a,b) => (a.toString() - b.toString())));
 
     let string = array.toString();
     return string.replace(/\,/g,' / ');
   }
+
 
   render() {
     const { movies, links } = this.props;
@@ -83,7 +89,7 @@ class Allmoviescard extends Component {
         <h1>Movies</h1>
         <Row className="underLineRow">
           <Col lg={11}>
-            <h2></h2>
+            <h2> </h2>
           </Col>
           <Col lg={1}>
             <Button onClick={() => this.newMovie()}>Add new movie</Button>
