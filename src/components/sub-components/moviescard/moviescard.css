@@ -36,6 +36,7 @@
 .card-img {
   width: auto;
   height: 360px;
+  object-fit: cover;
 }
 
 h2::before {
@@ -93,4 +94,22 @@ h1 {
 
 .underLineRow {
   padding-left: 15px;
+}
+
+.pagination{
+  justify-content: center;
+}
+
+.page-link{
+  color: white !important;
+  background-color: #24323f !important;
+  border: none;
+}
+
+.page-link:hover{
+  background-color: #1A2634 !important;
+}
+
+.page-item.active .page-link{
+  border: 1px solid white!important;
 }

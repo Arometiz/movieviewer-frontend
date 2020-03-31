@@ -55,7 +55,7 @@ class Movie extends Component {
     array.sort((a, b) => a.toString() - b.toString());
 
     let string = array.toString();
-    return string.replace(/\,/g, " / ");
+    return string.replace(/\,/g,' / ');
   }
 
   render() {
@@ -107,7 +107,6 @@ class Movie extends Component {
                     </ul>
 
                     <Row lg={12} className="castSection">
-                      <img src></img>
                       <ul>
                         <li>Cast</li>
                         <h2 id="mainMovieLine"> </h2>
@@ -115,6 +114,7 @@ class Movie extends Component {
                         <Col lg={3} className="actor">
                             <ul className="actorItem">
                               <img
+                              alt={actor.name}
                                 className="actorPicture"
                                 src={
                                   apiUrl +

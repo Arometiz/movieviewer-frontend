@@ -8,20 +8,23 @@ import {
   getMoviesPending,
   getMoviesError,
   getMovies,
-  getLinks
+  getLinks,
+  getTotalMovieCount
 } from "../../../reducers/movieListReducer";
 import fetchMoviesAction from "../../../apicalls/fetchMovies";
 import { bindActionCreators } from "redux";
 import Loader from "react-loader-spinner";
 import { apiUrl, moviePath } from "../../../environment";
 import emptyMovieAction from "../../../actions/emptyMovieAction";
+import Pagination from "react-js-pagination";
 
 const mapStateToProps = state => ({
   error: getMoviesError(state),
   movies: getMovies(state),
   pending: getMoviesPending(state),
   movie: state.movie.movie,
-  links: getLinks(state)
+  links: getLinks(state),
+  totalMovieCount: getTotalMovieCount(state)
 });
 
 const mapDispatchToProps = dispatch =>
@@ -37,13 +40,27 @@ class Allmoviescard extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      activePage: 0
+    }
+
     this.shouldComponentRender = this.shouldComponentRender.bind(this);
   }
 
   componentDidMount() {
     const { fetchMovies, emptyMovie } = this.props;
     emptyMovie();
-    fetchMovies();
+    fetchMovies(0);
+  }
+
+  handlePageChange(pageNumber) {
+    const { fetchMovies } = this.props;
+    console.log(this.props.totalMovieCount);
+    this.setState({ 
+      activePage: pageNumber
+    });
+    pageNumber = pageNumber - 1;
+    fetchMovies(pageNumber);
   }
 
   shouldComponentRender() {
@@ -66,13 +83,12 @@ class Allmoviescard extends Component {
     genres.forEach(genre => {
       array.push(genre.name);
     });
-    
-    array.sort(((a,b) => (a.toString() - b.toString())));
+
+    array.sort((a, b) => a.toString() - b.toString());
 
     let string = array.toString();
     return string.replace(/\,/g,' / ');
   }
-
 
   render() {
     const { movies, links } = this.props;
@@ -104,6 +120,7 @@ class Allmoviescard extends Component {
             >
               <Card style={{ width: "16rem" }}>
                 <Card.Img
+                  alt= {movie.name}
                   src={
                     apiUrl +
                     moviePath +
@@ -122,6 +139,16 @@ class Allmoviescard extends Component {
             </Col>
           ))}
         </Row>
+        <Pagination
+          itemClass="page-item"
+          linkClass="page-link"
+          activePage={this.state.activePage}
+          itemsCountPerPage={16}
+          hideFirstLastPages
+          totalItemsCount={17}
+          pageRangeDisplayed={Math.ceil( (this.props.totalMovieCount/16)) }
+          onChange={this.handlePageChange.bind(this)}
+        />
       </div>
     );
   }

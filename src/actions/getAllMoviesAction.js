@@ -8,10 +8,11 @@ export function fetchMoviesPending() {
     }
 }
 
-export function fetchMoviesSucces(movies, links){
+export function fetchMoviesSucces(movies, links, totalMovieCount){
     return{
         type: FETCH_MOVIES_SUCCES,
         movies: movies,
+        totalMovieCount: totalMovieCount,
         links: links
     }
 }

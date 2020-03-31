@@ -8,6 +8,7 @@ const initialState = {
   pending: false,
   movies: [],
   links: [],
+  totalMovieCount: 0,
   error: null
 };
 
@@ -23,6 +24,7 @@ export default function moviesReducer(state = initialState, action) {
         ...state,
         pending: false,
         movies: action.movies,
+        totalMovieCount : action.totalMovieCount,
         links: action.links
       };
     case FETCH_MOVIES_ERROR:
@@ -40,3 +42,4 @@ export const getMovies = state => state.movies.movies;
 export const getMoviesPending = state => state.movies.pending;
 export const getMoviesError = state => state.movies.error;
 export const getLinks = state => state.movies.links;
+export const getTotalMovieCount = state => state.movies.totalMovieCount;
