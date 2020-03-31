@@ -32,6 +32,7 @@ const store = createStore(
    movies: moviesReducer,
    movie: movieReducer
   }),
+  ReadFromStorage(),
   composeEnhancer(applyMiddleware(thunk))
 );
 
