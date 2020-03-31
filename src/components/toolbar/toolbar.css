@@ -1,21 +1,20 @@
-.toolbar{
-    width: 100%;
-    background-color: #1A2634;
-    height: 10vh;
+.toolbar {
+  width: 100%;
+  background-color: #1a2634;
+  height: 10vh;
 }
 
-h1{
-    margin: 0;
+.websitePicture {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
-.title{
-    padding: 0 0 0;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
-    padding-left: 1%;
-}
-
-a, a:hover{
-    color: white;
-    text-decoration: none;
+.profilePicture {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  float:right;
+  padding: 1% 1% 1% 1%;
 }

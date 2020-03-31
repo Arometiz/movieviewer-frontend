@@ -1,8 +1,8 @@
-import "./moviescard.css";
+import "./moviesrow.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import React, { Component } from "react";
-import { Card, Col, Row, Button } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import {
   getMoviesPending,
@@ -16,7 +16,6 @@ import { bindActionCreators } from "redux";
 import Loader from "react-loader-spinner";
 import { apiUrl, moviePath } from "../../../environment";
 import emptyMovieAction from "../../../actions/emptyMovieAction";
-import Pagination from "react-js-pagination";
 
 const mapStateToProps = state => ({
   error: getMoviesError(state),
@@ -36,14 +35,9 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-class Allmoviescard extends Component {
+class MoviesRow extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activePage: 0
-    }
-
     this.shouldComponentRender = this.shouldComponentRender.bind(this);
   }
 
@@ -51,16 +45,6 @@ class Allmoviescard extends Component {
     const { fetchMovies, emptyMovie } = this.props;
     emptyMovie();
     fetchMovies(0);
-  }
-
-  handlePageChange(pageNumber) {
-    const { fetchMovies } = this.props;
-    console.log(this.props.totalMovieCount);
-    this.setState({ 
-      activePage: pageNumber
-    });
-    pageNumber = pageNumber - 1;
-    fetchMovies(pageNumber);
   }
 
   shouldComponentRender() {
@@ -74,10 +58,6 @@ class Allmoviescard extends Component {
     return (window.location.href = "/movie/" + movie.movie_id);
   }
 
-  newMovie() {
-    return (window.location.href = "movie/add-new-movie");
-  }
-
   arrayFormat(genres) {
     let array = [];
     genres.forEach(genre => {
@@ -87,7 +67,7 @@ class Allmoviescard extends Component {
     array.sort((a, b) => a.toString() - b.toString());
 
     let string = array.toString();
-    return string.replace(/\,/g,' / ');
+    return string.replace(/\,/g, " / ");
   }
 
   render() {
@@ -102,15 +82,6 @@ class Allmoviescard extends Component {
 
     return (
       <div>
-        <h1>Movies</h1>
-        <Row className="underLineRow">
-          <Col lg={11}>
-            <h2> </h2>
-          </Col>
-          <Col lg={1}>
-            <Button onClick={() => this.newMovie()}>Add new movie</Button>
-          </Col>
-        </Row>
         <Row lg={10} className="movieRow">
           {movies.map(movie => (
             <Col
@@ -120,7 +91,7 @@ class Allmoviescard extends Component {
             >
               <Card style={{ width: "16rem" }}>
                 <Card.Img
-                  alt= {movie.name}
+                  alt={movie.name}
                   src={
                     apiUrl +
                     moviePath +
@@ -139,19 +110,9 @@ class Allmoviescard extends Component {
             </Col>
           ))}
         </Row>
-        <Pagination
-          itemClass="page-item"
-          linkClass="page-link"
-          activePage={this.state.activePage}
-          itemsCountPerPage={16}
-          hideFirstLastPages
-          totalItemsCount={17}
-          pageRangeDisplayed={Math.ceil( (this.props.totalMovieCount/16)) }
-          onChange={this.handlePageChange.bind(this)}
-        />
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Allmoviescard);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesRow);

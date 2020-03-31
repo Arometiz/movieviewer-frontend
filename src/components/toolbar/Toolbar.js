@@ -5,7 +5,18 @@ class Toolbar extends Component {
   render() {
     return (
       <div className="toolbar">
-            <h1><a href="/home" className="title">Movie Viewer</a></h1>
+        <a href="/home">
+          <img
+            className="websitePicture"
+            alt=""
+            src={process.env.PUBLIC_URL + "movie.jpg"}
+          />
+        </a>
+        <img
+            className="profilePicture"
+            alt=""
+            src={process.env.PUBLIC_URL + "profilepicture.jpg"}
+          />
       </div>
     );
   }

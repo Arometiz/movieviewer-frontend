@@ -1,3 +1,57 @@
-body{
-    background-color: #24323F;
+body {
+  background-color: #24323f;
+}
+
+h2::before {
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid #505863;
+  margin: auto;
+}
+
+.btn,
+.btn:focus,
+.btn:active {
+  background-color: #21e08b !important;
+  color: #24323f !important;
+  border: none !important;
+  box-shadow: none;
+  border-radius: 50px !important;
+}
+
+.btn:hover {
+  background-color: #74d5aa !important;
+}
+
+h2 {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  line-height: 0.1em;
+  padding-top: 1%;
+}
+
+.underLineRow {
+  padding-left: 15px;
+}
+
+.pagination {
+  position: fixed;
+  bottom: 4%;
+  left: 0;
+  width: 100%;
+}
+
+.page-link {
+  color: white !important;
+  background-color: #24323f !important;
+  border: none;
+}
+
+.page-link:hover {
+  background-color: #1a2634 !important;
+}
+
+.page-item.active .page-link {
+  border: 1px solid white !important;
 }
