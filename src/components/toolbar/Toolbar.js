@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import movie from "../../pictures/movie.jpg";
+import profilepicture from '../../pictures/profilepicture.jpg';
 import "./toolbar.css";
 
 class Toolbar extends Component {
@@ -9,13 +11,13 @@ class Toolbar extends Component {
           <img
             className="websitePicture"
             alt=""
-            src={process.env.PUBLIC_URL + "movie.jpg"}
+            src={movie}
           />
         </a>
         <img
             className="profilePicture"
             alt=""
-            src={process.env.PUBLIC_URL + "profilepicture.jpg"}
+            src={profilepicture}
           />
       </div>
     );

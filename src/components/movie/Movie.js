@@ -12,6 +12,7 @@ import { Col, Row } from "react-bootstrap";
 import { apiUrl, moviePath, actorPath } from "../../environment";
 import YouTube from "react-youtube";
 import "./movie.css";
+import Review from "../sub-components/review/Review";
 
 const mapStateToProps = state => ({
   error: getMovieError(state),
@@ -141,6 +142,7 @@ class Movie extends Component {
                 <li className="reviewSection">Reviews</li>
                 <h2></h2>
               </ul>
+                <Review></Review>
             </Col>
           </Row>
         </div>
