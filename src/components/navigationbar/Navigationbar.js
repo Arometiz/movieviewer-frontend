@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Movies from "../movies/Movies";
 import "./navigationbar.css";
 import Movie from "../movie/Movie";
+import NewMovie from "../newmovie/NewMovie";
 
 class Navigationbar extends Component {
   render() {
@@ -15,10 +16,10 @@ class Navigationbar extends Component {
               <Nav.Item>
                 <Nav.Link className="flex flex-row" href={"/movies"}>
                   <div className="align-center justify-start">
-                      <i className="fas fa-film fa-2x"></i>
+                    <i className="fas fa-film fa-2x"></i>
                   </div>
                   <div className="align-center justify-center flex-grow-1">
-                      <h6 className="nav-item-text">Movies</h6>
+                    <h6 className="nav-item-text">Movies</h6>
                   </div>
                 </Nav.Link>
               </Nav.Item>
@@ -30,10 +31,8 @@ class Navigationbar extends Component {
               <Route path="/movies">
                 <Movies></Movies>
               </Route>
-              <Route exact path="/movie/:id" component={Movie}>
-              </Route>
-              <Route exact path="/movie/add-new-movie" component={Movie}>
-              </Route>
+              <Route exact path="/movie/:id" component={Movie}></Route>
+              <Route exact path="/add-new-movie" component={NewMovie}></Route>
             </Switch>
           </Col>
         </Row>

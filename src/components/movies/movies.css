@@ -35,13 +35,6 @@ h2 {
   padding-left: 15px;
 }
 
-.pagination {
-  position: fixed;
-  bottom: 4%;
-  left: 0;
-  width: 100%;
-}
-
 .page-link {
   color: white !important;
   background-color: #24323f !important;

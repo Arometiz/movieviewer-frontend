@@ -1,41 +1,46 @@
 import React, { Component } from "react";
 import MoviesRow from "../sub-components/moviescard/MoviesRow";
 import { Col, Row, Button } from "react-bootstrap";
-import '../movies/movies.css';
+import "../movies/movies.css";
 import Pagination from "react-js-pagination";
 import { bindActionCreators } from "redux";
 import fetchMoviesAction from "../../apicalls/fetchMovies";
 import { connect } from "react-redux";
+import { getTotalMovieCount } from "../../reducers/movieListReducer";
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
-      fetchMovies: fetchMoviesAction
+      fetchMovies: fetchMoviesAction,
     },
     dispatch
   );
 
+const mapStateToProps = (state) => ({
+  totalMovieCount: getTotalMovieCount(state),
+});
+
 class Movies extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
-      activePage: 0
+      activePage: 0,
     };
   }
 
   handlePageChange(pageNumber) {
     const { fetchMovies } = this.props;
-    console.log(this.props.totalMovieCount);
+    console.log(this.props);
     this.setState({
-      activePage: pageNumber
+      activePage: pageNumber,
     });
     pageNumber = pageNumber - 1;
     fetchMovies(pageNumber);
   }
 
   newMovie() {
-    return (window.location.href = "movie/add-new-movie");
+    return (window.location.href = "/add-new-movie");
   }
 
   render() {
@@ -51,19 +56,22 @@ class Movies extends Component {
           </Col>
         </Row>
         <MoviesRow></MoviesRow>
-        <Pagination
-          itemClass="page-item"
-          linkClass="page-link"
-          activePage={this.state.activePage}
-          itemsCountPerPage={16}
-          hideFirstLastPages
-          totalItemsCount={17}
-          pageRangeDisplayed={Math.ceil(this.props.totalMovieCount / 16)}
-          onChange={this.handlePageChange.bind(this)}
-        />
+        <div className="moviePagination">
+          <Pagination
+            itemClass="page-item"
+            linkClass="page-link"
+            activePage={this.state.activePage}
+            itemsCountPerPage={16}
+            lastPageText="Last"
+            firstPageText="First"
+            totalItemsCount={this.props.totalMovieCount}
+            pageRangeDisplayed={Math.ceil(this.props.totalMovieCount / 16)}
+            onChange={this.handlePageChange.bind(this)}
+          />
+        </div>
       </div>
     );
   }
 }
 
-export default connect(null, mapDispatchToProps)(Movies);
+export default connect(mapStateToProps, mapDispatchToProps)(Movies);

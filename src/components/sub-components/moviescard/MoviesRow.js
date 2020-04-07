@@ -54,7 +54,6 @@ class MoviesRow extends Component {
   }
 
   clickMovie(movie) {
-    console.log(movie);
     return (window.location.href = "/movie/" + movie.movie_id);
   }
 

@@ -1,61 +1,61 @@
-h5{
-    color: white;
-    font-size: 15px;
-    margin: 0 0 0;
-    justify-content: start;
+h5 {
+  color: white;
+  font-size: 15px;
+  margin: 0 0 0;
+  justify-content: start;
 }
 
-.comment{
-    overflow-y: auto;
-    color: white;
-    width: auto;
-    height: 90%;
+.comment {
+  overflow-y: auto;
+  color: white;
+  width: auto;
+  height: 90%;
 }
 
-.reviewHeader{
-    display: flex;
-    flex-direction: row;
+.reviewHeader {
+  display: flex;
+  flex-direction: row;
 }
 
-.reviewUserPicture{
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    object-fit: cover;
+.reviewUserPicture {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.userBanner{
-    background-color: white;
-    border-radius: 5px;
-    font-size: 15px;
-    margin-top: 3%;
-    border: 2px solid black;
+.userBanner {
+  background-color: grey;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-top: 3%;
+  border: 2px solid black;
 }
 
-.userBanner.Admin{
-    background-color: #23CE6B;
+.userBanner.Admin {
+  background-color: #ec4d37;
 }
 
-.userBanner.User{
-    background-color: #FAD744;
+.userBanner.User {
+  background-color: grey;
 }
 
-.userBanner.Moderator{
-    background-color: #EC4D37;
+.userBanner.Moderator {
+  background-color: #23ce6b;
 }
 
-.user{
-    width: 140px;
-    height: auto;
+.user {
+  width: 140px;
+  height: auto;
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }
 
-.review{
-    margin-top: 1%;
-    margin-bottom: 2%;
-    height: 150px;
+.review {
+  margin-top: 1%;
+  margin-bottom: 2%;
+  height: 150px;
 }
