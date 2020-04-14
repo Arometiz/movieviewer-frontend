@@ -11,7 +11,7 @@ function fetchMovies(page){
                 throw(res.error);
             }
             dispatch(fetchMoviesSucces(res.movies, res.links, res.totalMovieCount));
-            return res.movies;
+            return res;
         })
         .catch(error => {
             dispatch(fetchMoviesError(error));

@@ -1,0 +1,88 @@
+.card{
+    background-color: #3B4956;
+    margin: 10px 0 0 0;
+}
+
+.card-title{
+    font-size: 3vh;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: white;
+}
+
+input, textarea{
+    background-color: white;
+    border: 1px solid white;
+    color: #3B4956;;
+    flex-basis: 50%;
+    padding: 0;
+    margin: 0 0 0 0;
+    flex-basis: 50%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    border-radius: 10px;
+    resize: none;
+}
+
+input:hover, textarea:hover{
+    border: 1px solid #1A2634;
+}
+
+input:active, textarea:active{
+    border: 1px solid #1A2634;
+}
+
+input:focus, textarea:focus{
+    outline-width: 0;
+}
+
+select:focus, select:hover, select:active{
+    border: 1px solid #1A2634;
+    outline-width: 0;
+}
+
+textarea{
+    height: 100px;
+}
+
+label{
+    color: white;
+    margin: 0 0 0 0;
+    flex-basis: 50%;
+}
+
+.movieNameArea{
+    display: flex;
+    flex-direction: row;
+}
+
+.movieDescriptionArea{
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 0 0;
+}
+
+.movieReleaseDateArea{
+    display: flex;
+    flex-direction: row;
+}
+
+.releaseDateInput{
+    width: 50%;
+    border-radius: 10px;
+}
+
+.youtubeArea{
+    display: flex;
+    flex-direction: row;
+}
+
+.movieGenreArea{
+    display: flex;
+    flex-direction: row;
+}
+
+.genreInput{
+    width: 50%;
+    border-radius: 10px;
+}
