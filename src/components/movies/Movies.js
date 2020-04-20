@@ -52,10 +52,10 @@ class Movies extends Component {
             <h2> </h2>
           </Col>
           <Col lg={1}>
-            <Button onClick={() => this.newMovie()}>Add new movie</Button>
+            <Button onClick={() => this.newMovie()}>New</Button>
           </Col>
         </Row>
-        <MoviesRow></MoviesRow>
+        <MoviesRow className="movieRow"></MoviesRow>
         <div className="moviePagination">
           <Pagination
             itemClass="page-item"

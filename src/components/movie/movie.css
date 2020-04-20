@@ -70,8 +70,9 @@
 .youtubePlayer{
     margin-left: 3%;
     padding: 0 0;
-    height: 550px;
-    width: 870px;
+    height: auto;
+    width: auto;
+    overflow-x: hidden;
 }
 
 .movieRole{
@@ -90,6 +91,8 @@
 }
 
 .actorPicture{
+    min-height: 90px;
+    min-width: 60px;
     height: 90px;
     width: 60px;
     object-fit: cover;
