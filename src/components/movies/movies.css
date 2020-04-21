@@ -48,3 +48,8 @@ h2 {
 .page-item.active .page-link {
   border: 1px solid white !important;
 }
+
+.movieRow {
+  height: 64vh;
+  overflow-y: scroll;
+}
