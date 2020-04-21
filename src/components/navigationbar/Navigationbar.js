@@ -11,7 +11,7 @@ class Navigationbar extends Component {
     return (
       <Router>
         <Row className="navRow">
-          <Col lg={2}>
+          <Col lg={2} xl={1}>
             <Nav defaultActiveKey="/home" className="flex-column">
               <Nav.Item>
                 <Nav.Link className="flex flex-row" href={"/movies"}>
@@ -25,7 +25,7 @@ class Navigationbar extends Component {
               </Nav.Item>
             </Nav>
           </Col>
-          <Col lg={10} className="movies">
+          <Col lg={10} xl={11} className="movies">
             <Switch>
               <Route path="/home"></Route>
               <Route path="/movies">

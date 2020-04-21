@@ -48,10 +48,10 @@ class Movies extends Component {
       <div>
         <h1>Movies</h1>
         <Row className="underLineRow">
-          <Col lg={11}>
+          <Col lg={11} xl={11}>
             <h2> </h2>
           </Col>
-          <Col lg={1}>
+          <Col lg={1} xl={1}>
             <Button onClick={() => this.newMovie()}>New</Button>
           </Col>
         </Row>

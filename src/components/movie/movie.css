@@ -70,9 +70,6 @@
 .youtubePlayer{
     margin-left: 3%;
     padding: 0 0;
-    height: auto;
-    width: auto;
-    overflow-x: hidden;
 }
 
 .movieRole{
@@ -82,7 +79,7 @@
 
 .movieBox{
     display: flex;
-    margin-top: 2%;
+    margin-top: 2%;  
 }
 
 .realName{

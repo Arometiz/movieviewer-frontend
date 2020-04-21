@@ -65,12 +65,12 @@ class Movie extends Component {
       return (
         <div>
           <Row>
-            <Col className="movieInformation" lg={7}>
+            <Col className="movieInformation" lg={7} xl={8}>
               <div className="box">
                 <Col>
                   <div className="movieDiv">
                     <ul className="justify-center">
-                      <li className="movieHeader">
+                      <li key="movieHeader" className="movieHeader">
                         {movie.movie.name +
                           " (" +
                           movie.movie.releaseDate +
@@ -95,12 +95,12 @@ class Movie extends Component {
                       ></YouTube>
                     </div>
                     <ul>
-                      <li>
+                      <li key="movieGenres">
                         <div className="movieGenres">
                           {this.arrayFormat(movie.movie.genres)}
                         </div>
                       </li>
-                      <li>
+                      <li key="movieDescription">
                         <div className="movieDescription">
                           {movie.movie.description}
                         </div>
@@ -109,10 +109,10 @@ class Movie extends Component {
 
                     <Row lg={12} className="castSection">
                       <ul>
-                        <li>Cast</li>
+                        <li key="castTitle">Cast</li>
                         <h2 id="mainMovieLine"> </h2>
                           {movie.movie.actors.map(actor => (
-                        <Col lg={3} className="actor">
+                        <Col key={actor.actor_id} lg={3} className="actor">
                             <ul className="actorItem">
                               <img
                               alt={actor.name}
@@ -125,8 +125,8 @@ class Movie extends Component {
                                 }
                               ></img>
                               <div className="actorInformation">
-                                <li className="movieRole">{actor.role}</li>
-                                <li className="realName">{actor.name}</li>
+                                <li key={actor.role} className="movieRole">{actor.role}</li>
+                                <li key={actor.name} className="realName">{actor.name}</li>
                               </div>
                             </ul>
                         </Col>
@@ -137,9 +137,9 @@ class Movie extends Component {
                 </Col>
               </div>
             </Col>
-            <Col lg={5}>
+            <Col lg={5} xl={4}>
               <ul>
-                <li className="reviewSection">Reviews</li>
+                <li key="reviews" className="reviewSection">Reviews</li>
                 <h2></h2>
               </ul>
                 <Review></Review>

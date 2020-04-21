@@ -64,8 +64,8 @@ class Review extends Component {
     return (
       <div>
         {this.state.reviewArray.map((review) => (
-          <Row>
-            <Col className="review" lg={4}>
+          <Row key={review.reviewId} >
+            <Col className="review" lg={4} xl={3}>
               <div className="user">
                 <center>
                   <img className="reviewUserPicture" src={profilepicture} />
@@ -84,7 +84,7 @@ class Review extends Component {
                 </center>
               </div>
             </Col>
-            <Col className="review" lg={8}>
+            <Col className="review" lg={8} xl={9}>
               <div className="comment">{review.comment}</div>
             </Col>
           </Row>
