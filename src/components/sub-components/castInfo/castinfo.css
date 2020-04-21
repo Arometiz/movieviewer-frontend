@@ -1,3 +1,12 @@
 .card{
     margin: 0 0 0 0;
 }
+
+button{
+    margin: 0.5% 0.5% 0.5% 0.5%;
+}
+
+.actorName, .actorRole{
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
