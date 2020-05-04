@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose , combineReducers} from "redux";
 import moviesReducer from '../reducers/movieListReducer';
 import movieReducer from '../reducers/movieReducer';
 import thunk from 'redux-thunk';
+import loginReducer from "../reducers/loginReducer";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -30,7 +31,8 @@ function ReadFromStorage(){
 const store = createStore(
   combineReducers({
    movies: moviesReducer,
-   movie: movieReducer
+   movie: movieReducer,
+   loginReducer: loginReducer
   }),
   ReadFromStorage(),
   composeEnhancer(applyMiddleware(thunk))

@@ -45,6 +45,7 @@ class MoviesRow extends Component {
     const { fetchMovies, emptyMovie } = this.props;
     emptyMovie();
     fetchMovies(0);
+    console.log(apiUrl + moviePath + "/all-approved-movies?page=" + 0)
   }
 
   shouldComponentRender() {
